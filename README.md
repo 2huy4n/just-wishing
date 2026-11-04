@@ -55,13 +55,22 @@ Copy-Item just-wishing\SKILL.md,just-wishing\scripts,just-wishing\LICENSE,just-w
   "$env:USERPROFILE\.agents\skills\just-wishing\" -Recurse
 ```
 
-### 方式三：下载 ZIP + 手动复制
+### 方式三：让 AI 帮你安装
 
-1. 打开仓库页面，下载 ZIP 并解压。
-2. 把解压后的整个 `just-wishing` 目录复制到：
-   - Claude Code：`~/.claude/skills/just-wishing/`
-   - DSH / Codex / TRAE / 通用 Agent Skills：`~/.agents/skills/just-wishing/`
-3. 至少确认目标目录里有 `SKILL.md`、`scripts/guard.js`、`LICENSE`。
+把下面这段直接发给你的 AI 助手：
+
+> 请帮我安装这个 Skill：https://github.com/2huy4n/just-wishing
+>
+> - 先问我用的是 Claude Code、DSH、Codex 还是 TRAE，不要猜。
+> - 优先执行 `npx -y skills add 2huy4n/just-wishing --copy`；如果 `npx` 不可用，再 `git clone` 后复制整个目录。
+> - 必须保留 `scripts/guard.js`、`LICENSE` 和 `SKILL.md`，不要只复制 `SKILL.md`。
+> - 安装后检查目标目录，并告诉我 `/just-wishing` 是否已经可用。
+> - 如果你不能写文件，请给我可直接执行的命令，不要只给链接。
+
+AI 安装时也应遵守上面的目标目录规则：
+
+- Claude Code：`~/.claude/skills/just-wishing/`
+- DSH / Codex / TRAE / 通用 Agent Skills：`~/.agents/skills/just-wishing/`
 
 安装后重启工具或重新打开会话，`/just-wishing` 才会出现在技能列表中。
 
